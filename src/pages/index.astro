@@ -17,12 +17,12 @@ const homeFaqs = [
 	{
 		tab: "Safe speed",
 		q: "What wind speed is safe to fly a drone?",
-		a: "There is no one max for every drone. Use that model’s published limit, then stay well under it, gusts included. On this site, caution starts near 65% of the limit and no-go near 85% at 10 m, 80 m, or 120 m. Mini and Air class is often Level 5 (about 10.7 to 12 m/s). If trees and the app disagree, stay down.",
+		a: "There is no one max for every drone. Use that model’s published limit, then stay well under it, gusts included. On this site, caution starts near 65% of the limit and no go near 85% at 10 m, 80 m, or 120 m. Mini and Air class is often Level 5 (about 10.7 to 12 m/s). If trees and the app disagree, stay down.",
 	},
 	{
 		tab: "Too much wind",
 		q: "How much wind is too much for a drone?",
-		a: "Too much is when sustained wind or gusts eat the buffer on your airframe. We call no-go near 85% of the published limit, or any gust at the limit. If 80 m or 120 m is already in that band, keep it on the ground even if 10 m looks fine.",
+		a: "Too much is when sustained wind or gusts eat the buffer on your airframe. We call no go near 85% of the published limit, or any gust at the limit. If 80 m or 120 m is already in that band, keep it on the ground even if 10 m looks fine.",
 	},
 	{
 		tab: "Level 5",
@@ -33,8 +33,8 @@ const homeFaqs = [
 ---
 
 <Layout
-	title="Drone Max Wind — free go / no-go wind calculator."
-	description="Check if it is safe to fly your DJI, Autel, Skydio, or Holy Stone drone. Free wind at 10 m, 80 m, and 120 m with an instant go / no-go verdict. No account."
+	title="Drone Max Wind | free go / no go wind calculator."
+	description="Check if it is safe to fly your DJI, Autel, Skydio, or Holy Stone drone. Free wind at 10 m, 80 m, and 120 m with an instant go / no go verdict. No account."
 	jsonLd={[organizationLd(), websiteLd(), webAppLd(), faqLd(homeFaqs)]}
 >
 	<Header />
@@ -54,12 +54,12 @@ const homeFaqs = [
 						Know the wind before the props spin.
 					</h1>
 					<p class="mt-4 text-[15px] leading-6 text-body sm:mt-5 sm:text-body-lg">
-						Select the airframe —{" "}
+						Select the airframe:{" "}
 						<a href="/dji-mini-4-pro-wind-resistance-calculator" class="text-link">Mini 4 Pro</a>,{" "}
 						<a href="/dji-air-3s-wind-resistance-calculator" class="text-link">Air 3S</a>,{" "}
 						<a href="/dji-neo-wind-resistance-calculator" class="text-link">Neo</a>, or the{" "}
 						<a href="/models" class="text-link">full list</a>. We already store its published
-						limit. You get a go / no-go for this field, with gusts at the US 400 ft ceiling.
+						limit. You get a go / no go for this field, with gusts at the US 400 ft ceiling.
 						See <a href="/how-it-works" class="text-link">how the call works</a>.
 					</p>
 					<dl class="mt-6 grid grid-cols-3 gap-3 border-y border-hairline py-4 sm:mt-8 sm:gap-4 sm:py-5">
@@ -99,7 +99,7 @@ const homeFaqs = [
 					<h2 class="mt-2 text-xl leading-7 font-semibold tracking-[-0.6px] text-balance text-ink sm:text-display-md">Run it here. Results stay in the panel.</h2>
 				</div>
 				<p class="max-w-sm text-sm text-body">
-					Verdict, three altitudes, live conditions, and 12 hours — all inside the instrument.
+					Verdict, three altitudes, live conditions, and 12 hours, all inside the instrument.
 					The page length does not change.
 				</p>
 			</div>

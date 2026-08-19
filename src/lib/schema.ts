@@ -8,7 +8,7 @@ export function organizationLd() {
 		url: SITE,
 		logo: `${SITE}/favicon.svg`,
 		description:
-			"Free consumer-drone wind check. Go / caution / no-go from published model limits and 10 m, 80 m, and 120 m wind.",
+			"Free consumer drone wind check. Go / caution / no go from published model limits and 10 m, 80 m, and 120 m wind.",
 	};
 }
 
@@ -32,7 +32,7 @@ export function webAppLd() {
 		operatingSystem: "Any",
 		offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
 		description:
-			"Select a consumer drone and a location. Get a go / caution / no-go from wind at 10 m, 80 m, and 120 m.",
+			"Select a consumer drone and a location. Get a go / caution / no go from wind at 10 m, 80 m, and 120 m.",
 	};
 }
 

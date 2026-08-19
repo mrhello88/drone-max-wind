@@ -104,7 +104,7 @@ export function judge(drone: Drone, altitudes: AltitudeWind[]): Verdict {
 	} else if (peakMs >= limitMs) {
 		reason = `Wind or gusts at ${worst.meters} m reach ${peakMs.toFixed(1)} m/s, which is ${overPct >= 0 ? `${overPct}% over` : "at"} the ${drone.name} ${limitMs} m/s rating. Stay on the ground.`;
 	} else {
-		reason = `Wind at ${worst.meters} m is ${peakMs.toFixed(1)} m/s — inside the published number, but past our 15% safety buffer. Not worth the airframe.`;
+		reason = `Wind at ${worst.meters} m is ${peakMs.toFixed(1)} m/s, inside the published number, but past our 15% safety buffer. Not worth the airframe.`;
 	}
 
 	return {

@@ -13,7 +13,7 @@ const faqs = [
 	},
 	{
 		q: "Why do gusts matter more than the average?",
-		a: "A drone’s wind rating is usually sustained wind. A gust that hits the limit for a second can still shove a Mini-class airframe. We use the worse of sustained and gust at each height.",
+		a: "A drone’s wind rating is usually sustained wind. A gust that hits the limit for a second can still shove a Mini class airframe. We use the worse of sustained and gust at each height.",
 	},
 	{
 		q: "Does wind speed change with altitude?",
@@ -21,14 +21,14 @@ const faqs = [
 	},
 	{
 		q: "Can weather change during a flight?",
-		a: "Yes. A 12-hour hourly view is for planning, not a live guarantee. If the sky or the trees pick up while you are up, land.",
+		a: "Yes. A 12 hour hourly view is for planning, not a live guarantee. If the sky or the trees pick up while you are up, land.",
 	},
 ];
 ---
 
 <Layout
-	title="Drone weather and wind before you fly — Drone Max Wind"
-	description="How to check drone weather: sustained wind vs gusts, why 10 m is not 400 ft, and how to use a forecast for go / no-go flight planning."
+	title="Drone weather and wind before you fly | Drone Max Wind"
+	description="How to check drone weather: sustained wind vs gusts, why 10 m is not 400 ft, and how to use a forecast for go / no go flight planning."
 	jsonLd={[
 		breadcrumbLd([
 			{ name: "Home", href: "/" },
@@ -52,7 +52,7 @@ const faqs = [
 		<p class="mt-3 text-body">
 			Sustained wind is the mean. Gusts are the spikes. Your remote’s{" "}
 			<a href="/drone-wind-resistance" class="text-link">wind resistance</a> number is almost
-			always sustained. If gusts sit near that number, treat the flight as caution or no-go even
+			always sustained. If gusts sit near that number, treat the flight as caution or no go even
 			when the mean looks polite.
 		</p>
 		<p class="mt-4 text-body">
@@ -65,7 +65,7 @@ const faqs = [
 		<ol class="mt-3 list-decimal space-y-3 pl-5 text-body">
 			<li>Pick the actual airframe in the <a href="/models" class="text-link">model list</a> so the limit is not a guess.</li>
 			<li>Set the field, not the nearest city center if you can help it.</li>
-			<li>Read 10 m, 80 m, and 120 m — plus gusts — against that limit.</li>
+			<li>Read 10 m, 80 m, and 120 m, plus gusts, against that limit.</li>
 			<li>Scan the next few hours. A green now and a red in 40 minutes is still a no.</li>
 			<li>Look at the trees. If they disagree with the app, the trees win.</li>
 		</ol>
@@ -83,7 +83,7 @@ const faqs = [
 			links={[
 				{ href: "/#calculator", label: "Run the field check" },
 				{ href: "/drone-wind-resistance", label: "Wind resistance explained" },
-				{ href: "/how-it-works", label: "GO / CAUTION / NO-GO method" },
+				{ href: "/how-it-works", label: "GO / CAUTION / NO GO method" },
 				{ href: "/models", label: "Model wind limits" },
 			]}
 		/>

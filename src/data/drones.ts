@@ -31,7 +31,7 @@ export const drones: Drone[] = [
 		class: "Mini",
 		weightG: 249,
 		ratingSource: "manufacturer",
-		summary: "The US travel-drone default. Rated to 10.7 m/s (Level 5).",
+		summary: "The US travel drone default. Rated to 10.7 m/s (Level 5).",
 	},
 	{
 		slug: "dji-mini-4k",
@@ -53,7 +53,7 @@ export const drones: Drone[] = [
 		class: "Mini",
 		weightG: 249,
 		ratingSource: "manufacturer",
-		summary: "Tri-directional obstacle sensing Mini, Level 5 wind resistance.",
+		summary: "Three way obstacle sensing Mini, Level 5 wind resistance.",
 	},
 	{
 		slug: "dji-mini-3",
@@ -75,7 +75,7 @@ export const drones: Drone[] = [
 		class: "Mini",
 		weightG: 249,
 		ratingSource: "manufacturer",
-		summary: "The Mini that went mainstream. Level 5, 8.5–10.5 m/s.",
+		summary: "The Mini that went mainstream. Level 5, 8.5 to 10.5 m/s.",
 	},
 	{
 		slug: "dji-mini-2-se",
@@ -86,7 +86,7 @@ export const drones: Drone[] = [
 		class: "Mini",
 		weightG: 246,
 		ratingSource: "manufacturer",
-		summary: "Budget Mini. Back off sooner — Level 4, 8.5 m/s.",
+		summary: "Budget Mini. Back off sooner. Level 4, 8.5 m/s.",
 	},
 	{
 		slug: "dji-air-3s",
@@ -97,7 +97,7 @@ export const drones: Drone[] = [
 		class: "Air",
 		weightG: 724,
 		ratingSource: "manufacturer",
-		summary: "Dual-camera Air with a 12 m/s structural wind rating.",
+		summary: "Dual camera Air with a 12 m/s structural wind rating.",
 	},
 	{
 		slug: "dji-air-3",
@@ -130,7 +130,7 @@ export const drones: Drone[] = [
 		class: "Air",
 		weightG: 570,
 		ratingSource: "manufacturer",
-		summary: "Mavic Air 2 generation. Level 5, 8.5–10.5 m/s.",
+		summary: "Mavic Air 2 generation. Level 5, 8.5 to 10.5 m/s.",
 	},
 	{
 		slug: "dji-mavic-4-pro",
@@ -152,7 +152,7 @@ export const drones: Drone[] = [
 		class: "Pro",
 		weightG: 958,
 		ratingSource: "manufacturer",
-		summary: "Triple-camera Mavic. 12 m/s published wind resistance.",
+		summary: "Triple camera Mavic. 12 m/s published wind resistance.",
 	},
 	{
 		slug: "dji-mavic-3-classic",
@@ -185,7 +185,7 @@ export const drones: Drone[] = [
 		class: "Pro",
 		weightG: 907,
 		ratingSource: "manufacturer",
-		summary: "Hasselblad Mavic 2. Level 5, 8–10.5 m/s.",
+		summary: "Hasselblad Mavic 2. Level 5, 8 to 10.5 m/s.",
 	},
 	{
 		slug: "dji-mavic-2-zoom",
@@ -196,7 +196,7 @@ export const drones: Drone[] = [
 		class: "Pro",
 		weightG: 905,
 		ratingSource: "manufacturer",
-		summary: "24–48 mm Mavic 2. Same 10.5 m/s wind envelope as the Pro.",
+		summary: "24 to 48 mm Mavic 2. Same 10.5 m/s wind envelope as the Pro.",
 	},
 	{
 		slug: "dji-phantom-4-pro-v2",
@@ -218,7 +218,7 @@ export const drones: Drone[] = [
 		class: "Beginner",
 		weightG: 135,
 		ratingSource: "manufacturer",
-		summary: "Palm-sized vlog drone. Level 4 — skip anything past a breeze.",
+		summary: "Palm sized vlog drone. Level 4. Skip anything past a breeze.",
 	},
 	{
 		slug: "dji-flip",
@@ -262,7 +262,7 @@ export const drones: Drone[] = [
 		class: "FPV",
 		weightG: 795,
 		ratingSource: "manufacturer",
-		summary: "Original DJI FPV combo. Level 6, up to 13.8 m/s — still respect gusts.",
+		summary: "Original DJI FPV combo. Level 6, up to 13.8 m/s. Still respect gusts.",
 	},
 	{
 		slug: "dji-inspire-3",
@@ -405,7 +405,7 @@ export const drones: Drone[] = [
 		class: "Beginner",
 		weightG: 488,
 		ratingSource: "class-estimate",
-		summary: "Popular Amazon GPS quad. No official rating — we use a Level 4 estimate.",
+		summary: "Popular Amazon GPS quad. No official rating. We use a Level 4 estimate.",
 	},
 	{
 		slug: "holy-stone-hs720g",
@@ -416,7 +416,7 @@ export const drones: Drone[] = [
 		class: "Beginner",
 		weightG: 491,
 		ratingSource: "class-estimate",
-		summary: "4K GPS HS720G. No published rating — Level 4 class estimate.",
+		summary: "4K GPS HS720G. No published rating. Level 4 class estimate.",
 	},
 	{
 		slug: "holy-stone-hs175d",
@@ -482,7 +482,7 @@ export const drones: Drone[] = [
 		class: "FPV",
 		weightG: 35,
 		ratingSource: "class-estimate",
-		summary: "Tiny whoop. No spec-sheet wind rating — stay in light breeze only.",
+		summary: "Tiny whoop. No spec sheet wind rating. Stay in light breeze only.",
 	},
 	{
 		slug: "hoverair-x1",

@@ -9,7 +9,7 @@ import { breadcrumbLd, faqLd } from "../lib/schema";
 const faqs = [
 	{
 		q: "Why 65% and 85%?",
-		a: "They are planning buffers on this site, not FAA numbers. 65% of the published limit is caution; 85% or a gust at the limit is no-go. Spec sheets are not warranties.",
+		a: "They are planning buffers on this site, not FAA numbers. 65% of the published limit is caution; 85% or a gust at the limit is no go. Spec sheets are not warranties.",
 	},
 	{
 		q: "Why three heights?",
@@ -19,7 +19,7 @@ const faqs = [
 ---
 
 <Layout
-	title="How the go / no-go call works — Drone Max Wind"
+	title="How the go / no go call works | Drone Max Wind"
 	description="Plain-English explanation of drone wind ratings, the 15% safety buffer, and free 10 m / 80 m / 120 m Open-Meteo wind."
 	jsonLd={[
 		breadcrumbLd([
@@ -32,7 +32,7 @@ const faqs = [
 	<Header />
 	<main class="page-wrap max-w-3xl py-16">
 		<p class="font-mono text-caption uppercase tracking-wide text-mute">Method</p>
-		<h1 class="mt-3 text-display-lg font-semibold text-ink">How we call go or no-go.</h1>
+		<h1 class="mt-3 text-display-lg font-semibold text-ink">How we call go or no go.</h1>
 		<p class="mt-5 text-body-lg text-body">
 			No log wind profiles. No paywalled 400 ft chart. Three numbers, your drone's published
 			limit, and a buffer so gusts do not get the last word.
@@ -48,7 +48,7 @@ const faqs = [
 					<a href="/dji-air-3s-wind-resistance-calculator" class="text-link">Air 3S</a>, or
 					browse the{" "}
 					<a href="/models" class="text-link">model database</a>. Holy Stone and a few cinema
-					airframes are class estimates — the calculator labels those so you are not guessing
+					airframes are class estimates. The calculator labels those so you are not guessing
 					in silence.
 				</p>
 			</li>
@@ -56,7 +56,7 @@ const faqs = [
 				<h2 class="text-display-sm font-semibold text-ink">2. We pull three heights.</h2>
 				<p class="mt-2 text-body">
 					Open-Meteo hourly wind at 10 m, 80 m, and 120 m, plus 10 m gusts. 120 m is about 394
-					ft — the US recreational ceiling. Gusts at 80 m and 120 m are scaled from the 10 m
+					ft, the US recreational ceiling. Gusts at 80 m and 120 m are scaled from the 10 m
 					gust factor. That is conservative, not magic.
 				</p>
 			</li>
@@ -64,7 +64,7 @@ const faqs = [
 				<h2 class="text-display-sm font-semibold text-ink">3. Peak wind vs the rating.</h2>
 				<p class="mt-2 text-body">
 					We take the worse of sustained and gust at each height. Under 65% of the rating:
-					safe to fly. 65–85%: caution. 85% or more, or any gust at the limit: do not fly.
+					safe to fly. 65 to 85%: caution. 85% or more, or any gust at the limit: do not fly.
 					That maps to DJI{" "}
 					<a href="/drone-wind-resistance-levels" class="text-link">Level 4 vs Level 5</a>{" "}
 					on the{" "}

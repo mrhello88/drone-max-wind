@@ -131,7 +131,7 @@ function render(root: HTMLElement, unit: Unit) {
 			values: picks.map((d) => formatSpeed(unit, d.maxWindMs * 0.65)),
 		},
 		{
-			label: "No-go starts",
+			label: "No go starts",
 			values: picks.map((d) => formatSpeed(unit, d.maxWindMs * 0.85)),
 		},
 		{

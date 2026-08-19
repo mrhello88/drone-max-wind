@@ -35,7 +35,7 @@ const faqs = [
 ---
 
 <Layout
-	title={`${drone.name} wind resistance calculator — Drone Max Wind`}
+	title={`${drone.name} wind resistance calculator | Drone Max Wind`}
 	description={`${drone.name} max wind is ${drone.maxWindMs} m/s (${drone.windLevel}, about ${mph} mph). Check 10 m, 80 m, and 120 m wind against that rating for free.`}
 	jsonLd={[
 		breadcrumbLd([
@@ -86,9 +86,9 @@ const faqs = [
 		<section class="page-wrap max-w-3xl pb-16">
 			<h2 class="text-display-sm font-semibold text-ink">What wind can the {drone.name} handle?</h2>
 			<p class="mt-3 text-body">
-				Plan around {drone.maxWindMs} m/s sustained ({mph} mph) — {drone.windLevel} on DJI’s{" "}
+				Plan around {drone.maxWindMs} m/s sustained ({mph} mph), {drone.windLevel} on DJI’s{" "}
 				<a href="/drone-wind-resistance-levels" class="text-link">wind resistance scale</a>.
-				We flag caution at 65% of that and no-go at 85%, because gusts at 120 m are usually
+				We flag caution at 65% of that and no go at 85%, because gusts at 120 m are usually
 				worse than the 10 m METAR.{" "}
 				{drone.ratingSource === "class-estimate"
 					? "This airframe has no tidy published number; the limit is a class estimate."
@@ -111,7 +111,7 @@ const faqs = [
 				links={[
 					{ href: "/drone-wind-resistance-levels", label: `${drone.windLevel} explained` },
 					{ href: "/drone-wind-resistance", label: "What wind resistance means" },
-					{ href: "/how-it-works", label: "How go / no-go works" },
+					{ href: "/how-it-works", label: "How go / no go works" },
 					{ href: "/compare", label: "Compare models" },
 					{ href: "/drone-weather", label: "Drone weather" },
 				]}
