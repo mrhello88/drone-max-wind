@@ -1,4 +1,14 @@
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Google-InspectionTool
+Allow: /
+
 User-agent: *
 Allow: /
+Disallow: /cdn-cgi/
 
 Sitemap: https://dronemaxwind.com/sitemap-index.xml
