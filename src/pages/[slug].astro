@@ -1,0 +1,142 @@
+---
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import Calculator from "../components/Calculator.astro";
+import Faq from "../components/Faq.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+import RelatedLinks from "../components/RelatedLinks.astro";
+import { calculatorPath, drones, type Drone } from "../data/drones";
+import { breadcrumbLd, faqLd } from "../lib/schema";
+
+export function getStaticPaths() {
+	return drones.map((drone) => ({
+		params: { slug: `${drone.slug}-wind-resistance-calculator` },
+		props: { drone },
+	}));
+}
+
+type Props = { drone: Drone };
+const { drone } = Astro.props;
+const related = drones.filter((d) => d.brand === drone.brand && d.slug !== drone.slug).slice(0, 4);
+const mph = (drone.maxWindMs * 2.236936).toFixed(0);
+const kt = (drone.maxWindMs * 1.943844).toFixed(0);
+const path = calculatorPath(drone);
+const faqs = [
+	{
+		q: `What wind can the ${drone.name} handle?`,
+		a: `Plan around ${drone.maxWindMs} m/s sustained (about ${mph} mph / ${kt} kt). That figure is ${drone.ratingSource === "manufacturer" ? "from the manufacturer’s published wind resistance" : "a class estimate, not a published spec"}. Gusts at 120 m can exceed it even when 10 m looks fine.`,
+	},
+	{
+		q: "Is 400 ft different from the ground?",
+		a: "Usually yes. This page checks 10 m, 80 m, and 120 m (about 400 ft) against that limit. A ground breeze is not a 400 ft brief.",
+	},
+];
+---
+
+<Layout
+	title={`${drone.name} wind resistance calculator — Drone Max Wind`}
+	description={`${drone.name} max wind is ${drone.maxWindMs} m/s (${drone.windLevel}, about ${mph} mph). Check 10 m, 80 m, and 120 m wind against that rating for free.`}
+	jsonLd={[
+		breadcrumbLd([
+			{ name: "Home", href: "/" },
+			{ name: "Models", href: "/models" },
+			{ name: drone.name, href: path },
+		]),
+		faqLd(faqs),
+	]}
+>
+	<Header />
+	<main>
+		<Breadcrumbs
+			items={[
+				{ href: "/", label: "Home" },
+				{ href: "/models", label: "Models" },
+				{ label: drone.name },
+			]}
+		/>
+		<section class="page-wrap py-8 sm:py-12">
+			<p class="font-mono text-caption uppercase tracking-wide text-mute">
+				{drone.brand} · {drone.class}
+			</p>
+			<h1 class="mt-3 max-w-3xl text-display-lg font-semibold text-ink">
+				{drone.name} wind resistance calculator.
+			</h1>
+			<p class="mt-4 max-w-2xl text-body-lg text-body">{drone.summary}</p>
+			<dl class="mt-8 grid max-w-lg grid-cols-2 gap-4 rounded-md bg-canvas p-5 shadow-card">
+				<div>
+					<dt class="font-mono text-caption uppercase text-mute">Max wind</dt>
+					<dd class="mt-1 text-display-sm font-semibold text-ink">{drone.maxWindMs} m/s</dd>
+					<p class="text-sm text-body">{mph} mph · {kt} kt</p>
+				</div>
+				<div>
+					<dt class="font-mono text-caption uppercase text-mute">Rating</dt>
+					<dd class="mt-1 text-display-sm font-semibold text-ink">{drone.windLevel}</dd>
+					<p class="text-sm text-body">
+						{drone.ratingSource === "manufacturer" ? "Manufacturer" : "Class estimate"}
+					</p>
+				</div>
+			</dl>
+		</section>
+
+		<section class="page-wrap pb-16">
+			<Calculator drone={drone} />
+		</section>
+
+		<section class="page-wrap max-w-3xl pb-16">
+			<h2 class="text-display-sm font-semibold text-ink">What wind can the {drone.name} handle?</h2>
+			<p class="mt-3 text-body">
+				Plan around {drone.maxWindMs} m/s sustained ({mph} mph) — {drone.windLevel} on DJI’s{" "}
+				<a href="/drone-wind-resistance-levels" class="text-link">wind resistance scale</a>.
+				We flag caution at 65% of that and no-go at 85%, because gusts at 120 m are usually
+				worse than the 10 m METAR.{" "}
+				{drone.ratingSource === "class-estimate"
+					? "This airframe has no tidy published number; the limit is a class estimate."
+					: "That ceiling comes from the published wind resistance spec."}{" "}
+				Read{" "}
+				<a href="/drone-wind-resistance" class="text-link">what the rating actually means</a>
+				{" "}or{" "}
+				<a href="/how-it-works" class="text-link">how the verdict is calculated</a>.
+			</p>
+			<h2 class="mt-10 text-display-sm font-semibold text-ink">Is 400 ft different from the ground?</h2>
+			<p class="mt-3 text-body">
+				Usually yes. The same front that feels like a breeze at takeoff can be over the rating
+				at 120 m. That is why this page checks three heights, not one airport report.{" "}
+				<a href="/compare" class="text-link">Compare this airframe</a> against another, or
+				browse the{" "}
+				<a href="/models" class="text-link">full model database</a>.
+			</p>
+			<Faq items={faqs} />
+			<RelatedLinks
+				links={[
+					{ href: "/drone-wind-resistance-levels", label: `${drone.windLevel} explained` },
+					{ href: "/drone-wind-resistance", label: "What wind resistance means" },
+					{ href: "/how-it-works", label: "How go / no-go works" },
+					{ href: "/compare", label: "Compare models" },
+					{ href: "/drone-weather", label: "Drone weather" },
+				]}
+			/>
+		</section>
+
+		{
+			related.length > 0 && (
+				<section class="page-wrap pb-24">
+					<h2 class="text-display-sm font-semibold text-ink">Other {drone.brand} airframes</h2>
+					<ul class="mt-4 grid gap-3 sm:grid-cols-2">
+						{related.map((item) => (
+							<li>
+								<a href={calculatorPath(item)} class="block rounded-md bg-canvas p-5 shadow-card">
+									<p class="font-medium text-ink">{item.name}</p>
+									<p class="mt-1 text-sm text-body">
+										{item.windLevel} · {item.maxWindMs} m/s
+									</p>
+								</a>
+							</li>
+						))}
+					</ul>
+				</section>
+			)
+		}
+	</main>
+	<Footer />
+</Layout>

@@ -1,0 +1,107 @@
+---
+const path = Astro.url.pathname;
+const links = [
+	{ href: "/", label: "Calculator" },
+	{ href: "/models", label: "Models" },
+	{ href: "/compare", label: "Compare" },
+	{ href: "/drone-wind-resistance", label: "Guides" },
+	{ href: "/how-it-works", label: "How it works" },
+];
+---
+
+<header
+	class="sticky top-0 z-40 border-b border-hairline bg-canvas-soft/80 backdrop-blur-md"
+>
+	<div class="page-wrap flex h-16 items-center justify-between gap-2">
+		<a href="/" class="flex min-w-0 items-center gap-2 text-ink" aria-label="Drone Max Wind home">
+			<img
+				src="/favicon-96x96.png"
+				alt=""
+				width="32"
+				height="32"
+				class="h-8 w-8 shrink-0 rounded-sm"
+			/>
+			<span class="truncate text-sm font-medium tracking-tight">Drone Max Wind</span>
+		</a>
+
+		<nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
+			{
+				links.map((link) => (
+					<a
+						href={link.href}
+						class:list={[
+							"rounded-full px-3 py-2 text-sm text-body transition hover:text-ink",
+							path === link.href && "text-ink",
+						]}
+					>
+						{link.label}
+					</a>
+				))
+			}
+		</nav>
+
+		<div class="flex items-center gap-2">
+			<button
+				type="button"
+				id="theme-toggle"
+				class="grid h-11 w-11 place-items-center rounded-sm border border-hairline text-ink"
+				aria-label="Toggle light and dark mode"
+			>
+				<svg class="hidden h-5 w-5 dark:block" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+					<path d="M10 3.5a.75.75 0 0 1 .75.75v1.1a.75.75 0 0 1-1.5 0V4.25A.75.75 0 0 1 10 3.5Zm0 10.4a3.9 3.9 0 1 1 0-7.8 3.9 3.9 0 0 1 0 7.8Zm6.75-3.15a.75.75 0 0 1-.75.75h-1.1a.75.75 0 0 1 0-1.5h1.1a.75.75 0 0 1 .75.75ZM5.1 10.75a.75.75 0 0 1-.75.75H3.25a.75.75 0 0 1 0-1.5H4.35a.75.75 0 0 1 .75.75Zm9.37 4.12a.75.75 0 0 1-1.06 0l-.78-.78a.75.75 0 0 1 1.06-1.06l.78.78a.75.75 0 0 1 0 1.06Zm-7.72-7.72a.75.75 0 0 1-1.06 0l-.78-.78A.75.75 0 0 1 5.97 4.5l.78.78a.75.75 0 0 1 0 1.06Zm7.72 0a.75.75 0 0 1 0-1.06l.78-.78a.75.75 0 1 1 1.06 1.06l-.78.78a.75.75 0 0 1-1.06 0ZM5.19 14.87a.75.75 0 0 1 0-1.06l.78-.78a.75.75 0 0 1 1.06 1.06l-.78.78a.75.75 0 0 1-1.06 0ZM10 14.65a.75.75 0 0 1 .75.75v1.1a.75.75 0 0 1-1.5 0v-1.1a.75.75 0 0 1 .75-.75Z" />
+				</svg>
+				<svg class="block h-5 w-5 dark:hidden" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+					<path d="M16.5 11.2A6.7 6.7 0 0 1 8.8 3.5a.6.6 0 0 0-.8-.72 8 8 0 1 0 8.22 12.12.6.6 0 0 0-.72-.7Z" />
+				</svg>
+			</button>
+			<a
+				href="#calculator"
+				class="hidden h-7 items-center rounded-sm bg-primary px-2 text-sm font-medium text-on-primary sm:inline-flex"
+				>Check wind</a
+			>
+			<button
+				type="button"
+				id="nav-toggle"
+				class="grid h-11 w-11 shrink-0 place-items-center rounded-sm border border-hairline text-ink md:hidden"
+				aria-expanded="false"
+				aria-controls="mobile-nav"
+				aria-label="Open menu"
+			>
+				<svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+					<path d="M3 5h14v1.5H3V5Zm0 4.25h14v1.5H3v-1.5Zm0 4.25h14V15H3v-1.5Z"></path>
+				</svg>
+			</button>
+		</div>
+	</div>
+	<div id="mobile-nav" hidden class="border-t border-hairline bg-canvas md:hidden">
+		<nav class="page-wrap flex flex-col py-3" aria-label="Mobile">
+			{
+				links.map((link) => (
+					<a href={link.href} class="min-h-11 py-3 text-sm text-body">
+						{link.label}
+					</a>
+				))
+			}
+		</nav>
+	</div>
+</header>
+
+<script>
+	const themeBtn = document.getElementById("theme-toggle");
+	const navBtn = document.getElementById("nav-toggle");
+	const mobileNav = document.getElementById("mobile-nav");
+
+	themeBtn?.addEventListener("click", () => {
+		const root = document.documentElement;
+		const next = root.classList.contains("dark") ? "light" : "dark";
+		root.classList.toggle("dark", next === "dark");
+		localStorage.setItem("dmw-theme", next);
+	});
+
+	navBtn?.addEventListener("click", () => {
+		if (!mobileNav || !navBtn) return;
+		const open = mobileNav.hasAttribute("hidden");
+		mobileNav.toggleAttribute("hidden", !open);
+		navBtn.setAttribute("aria-expanded", String(open));
+	});
+</script>

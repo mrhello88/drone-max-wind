@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dronemaxwind.com/sitemap-index.xml

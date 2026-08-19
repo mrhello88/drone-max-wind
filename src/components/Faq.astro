@@ -1,0 +1,24 @@
+---
+export type FaqItem = { q: string; a: string };
+
+type Props = {
+	items: FaqItem[];
+	title?: string;
+};
+
+const { items, title = "Questions" } = Astro.props;
+---
+
+<section class="mt-12">
+	<h2 class="text-display-sm font-semibold text-ink">{title}</h2>
+	<dl class="mt-6 divide-y divide-hairline border-y border-hairline">
+		{
+			items.map((item) => (
+				<div class="py-5">
+					<dt class="text-base font-medium text-ink">{item.q}</dt>
+					<dd class="mt-2 text-sm leading-6 text-body">{item.a}</dd>
+				</div>
+			))
+		}
+	</dl>
+</section>

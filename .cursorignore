@@ -1,0 +1,9 @@
+﻿node_modules/
+.next/
+dist/
+build/
+out/
+.git/
+.astro/
+*.mp4
+*.zip

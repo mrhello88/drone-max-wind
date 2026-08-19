@@ -1,23 +1,62 @@
+---
+import "../styles/global.css";
+import JsonLd from "../components/JsonLd.astro";
+
+type Props = {
+	title: string;
+	description: string;
+	canonical?: string;
+	jsonLd?: unknown;
+};
+
+const { title, description, canonical, jsonLd } = Astro.props;
+const site = Astro.site ?? new URL("https://dronemaxwind.com");
+const canonicalUrl = new URL(canonical ?? Astro.url.pathname, site).href;
+const ogImage = new URL("/og.png", site).href;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="Drone Wind" />
+		<link rel="manifest" href="/site.webmanifest" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalUrl} />
+		<meta name="theme-color" content="#0a0a0a" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Drone Max Wind" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={ogImage} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		{jsonLd && <JsonLd data={jsonLd} />}
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
+		<script is:inline>
+			try {
+				if (localStorage.getItem("dmw-theme") !== "light") {
+					document.documentElement.classList.add("dark");
+				}
+			} catch {}
+		</script>
 	</head>
-	<body>
+	<body class="flex min-h-dvh flex-col bg-canvas-soft font-sans text-ink antialiased">
 		<slot />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

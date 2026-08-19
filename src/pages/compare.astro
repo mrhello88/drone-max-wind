@@ -1,0 +1,80 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+import RelatedLinks from "../components/RelatedLinks.astro";
+---
+
+<Layout
+	title="Compare drone wind resistance — Drone Max Wind"
+	description="Pick two or three drones and compare max wind, weight, class, and no-go thresholds. DJI, Autel, Skydio, and more."
+>
+	<Header />
+	<main class="page-wrap py-16">
+		<p class="font-mono text-caption uppercase tracking-wide text-mute">Compare</p>
+		<h1 class="mt-3 text-display-lg font-semibold text-ink">Which airframe takes more wind.</h1>
+		<p class="mt-4 max-w-2xl text-body-lg text-body">
+			This is not another calculator. Pick two or three models from the{" "}
+			<a href="/models" class="text-link">database</a> — start with{" "}
+			<a href="/dji-mini-4-pro-wind-resistance-calculator" class="text-link">Mini 4 Pro</a> vs{" "}
+			<a href="/dji-air-3s-wind-resistance-calculator" class="text-link">Air 3S</a>. We stack
+			max wind, weight, and the caution / no-go lines next to each other. Then{" "}
+			<a href="/#calculator" class="text-link">check this field</a>.
+		</p>
+
+		<section data-compare class="mt-10 grid gap-6">
+			<div class="grid gap-3">
+				<p class="text-sm text-body">Select models, then read the winner row in green.</p>
+				<div data-units class="flex h-11 w-full rounded-sm border border-hairline p-1">
+					<button type="button" data-unit="mph" aria-pressed="true" class="flex h-full min-w-0 flex-1 items-center justify-center rounded-sm bg-primary text-sm font-medium text-on-primary">mph</button>
+					<button type="button" data-unit="kt" aria-pressed="false" class="flex h-full min-w-0 flex-1 items-center justify-center rounded-sm text-sm font-medium text-body">kt</button>
+					<button type="button" data-unit="ms" aria-pressed="false" class="flex h-full min-w-0 flex-1 items-center justify-center rounded-sm text-sm font-medium text-body">m/s</button>
+				</div>
+			</div>
+
+			<div class="grid gap-3 lg:grid-cols-3">
+				{
+					[0, 1, 2].map((slot) => (
+						<label class="grid gap-2 rounded-md bg-canvas p-4 shadow-card">
+							<span class="font-mono text-caption uppercase text-mute">
+								{slot === 0 ? "Drone A" : slot === 1 ? "Drone B" : "Drone C (optional)"}
+							</span>
+							<input
+								data-slot-filter={slot}
+								type="search"
+								placeholder="Search Mini 4 Pro, Air 3S…"
+								autocomplete="off"
+								class="h-11 rounded-sm border border-hairline bg-canvas px-3 text-sm text-ink outline-none ring-link focus:ring-2"
+							/>
+							<select
+								data-slot-select={slot}
+								class="h-12 w-full rounded-sm border border-hairline bg-canvas px-3 pr-11 text-base text-ink outline-none ring-link focus:ring-2"
+							>
+							</select>
+						</label>
+					))
+				}
+			</div>
+
+			<p data-compare-note class="text-body-lg text-ink"></p>
+			<div data-compare-grid class="grid gap-3 lg:grid-cols-3"></div>
+			<div data-compare-table></div>
+		</section>
+		<RelatedLinks
+			links={[
+				{ href: "/models", label: "All scored models" },
+				{ href: "/how-it-works", label: "How the verdict works" },
+				{ href: "/drone-wind-resistance-levels", label: "Level 4 vs Level 5" },
+				{ href: "/#calculator", label: "Run a field check" },
+			]}
+		/>
+	</main>
+	<Footer />
+</Layout>
+
+<script>
+	import { initCompare } from "../lib/compare";
+
+	const root = document.querySelector<HTMLElement>("[data-compare]");
+	if (root) initCompare(root);
+</script>

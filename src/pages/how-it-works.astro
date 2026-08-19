@@ -1,0 +1,99 @@
+---
+import Faq from "../components/Faq.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+import RelatedLinks from "../components/RelatedLinks.astro";
+import { breadcrumbLd, faqLd } from "../lib/schema";
+
+const faqs = [
+	{
+		q: "Why 65% and 85%?",
+		a: "They are planning buffers on this site, not FAA numbers. 65% of the published limit is caution; 85% or a gust at the limit is no-go. Spec sheets are not warranties.",
+	},
+	{
+		q: "Why three heights?",
+		a: "10 m is takeoff. 80 m is a typical cruise. 120 m is about the US recreational ceiling. A single surface wind reading misses the top of the flight.",
+	},
+];
+---
+
+<Layout
+	title="How the go / no-go call works — Drone Max Wind"
+	description="Plain-English explanation of drone wind ratings, the 15% safety buffer, and free 10 m / 80 m / 120 m Open-Meteo wind."
+	jsonLd={[
+		breadcrumbLd([
+			{ name: "Home", href: "/" },
+			{ name: "How it works", href: "/how-it-works" },
+		]),
+		faqLd(faqs),
+	]}
+>
+	<Header />
+	<main class="page-wrap max-w-3xl py-16">
+		<p class="font-mono text-caption uppercase tracking-wide text-mute">Method</p>
+		<h1 class="mt-3 text-display-lg font-semibold text-ink">How we call go or no-go.</h1>
+		<p class="mt-5 text-body-lg text-body">
+			No log wind profiles. No paywalled 400 ft chart. Three numbers, your drone's published
+			limit, and a buffer so gusts do not get the last word.
+		</p>
+
+		<ol class="mt-12 grid gap-8">
+			<li>
+				<h2 class="text-display-sm font-semibold text-ink">1. You pick the airframe.</h2>
+				<p class="mt-2 text-body">
+					Each model stores a max sustained wind in m/s from the manufacturer when they
+					publish one. Pick a{" "}
+					<a href="/dji-mini-4-pro-wind-resistance-calculator" class="text-link">Mini 4 Pro</a>,{" "}
+					<a href="/dji-air-3s-wind-resistance-calculator" class="text-link">Air 3S</a>, or
+					browse the{" "}
+					<a href="/models" class="text-link">model database</a>. Holy Stone and a few cinema
+					airframes are class estimates — the calculator labels those so you are not guessing
+					in silence.
+				</p>
+			</li>
+			<li>
+				<h2 class="text-display-sm font-semibold text-ink">2. We pull three heights.</h2>
+				<p class="mt-2 text-body">
+					Open-Meteo hourly wind at 10 m, 80 m, and 120 m, plus 10 m gusts. 120 m is about 394
+					ft — the US recreational ceiling. Gusts at 80 m and 120 m are scaled from the 10 m
+					gust factor. That is conservative, not magic.
+				</p>
+			</li>
+			<li>
+				<h2 class="text-display-sm font-semibold text-ink">3. Peak wind vs the rating.</h2>
+				<p class="mt-2 text-body">
+					We take the worse of sustained and gust at each height. Under 65% of the rating:
+					safe to fly. 65–85%: caution. 85% or more, or any gust at the limit: do not fly.
+					That maps to DJI{" "}
+					<a href="/drone-wind-resistance-levels" class="text-link">Level 4 vs Level 5</a>{" "}
+					on the{" "}
+					<a href="/drone-wind-resistance" class="text-link">wind resistance</a> spec. The
+					extra 15% is for rotor wash, ridge rotors, and the fact that spec sheets are not
+					warranties.
+				</p>
+			</li>
+		</ol>
+
+		<div class="mt-12 rounded-md bg-canvas p-6 shadow-card">
+			<h2 class="text-display-sm font-semibold text-ink">What this is not.</h2>
+			<p class="mt-2 text-body">
+				Not LAANC. Not a TFR check. Not a substitute for looking at the trees. If the app says
+				go and the windsock says no, the windsock wins.
+			</p>
+		</div>
+		<p class="mt-8">
+			<a href="/#calculator" class="font-medium text-link">Run a field check →</a>
+		</p>
+		<Faq items={faqs} />
+		<RelatedLinks
+			links={[
+				{ href: "/models", label: "Model database" },
+				{ href: "/compare", label: "Compare airframes" },
+				{ href: "/drone-wind-resistance", label: "What wind resistance means" },
+				{ href: "/drone-weather", label: "Drone weather" },
+			]}
+		/>
+	</main>
+	<Footer />
+</Layout>

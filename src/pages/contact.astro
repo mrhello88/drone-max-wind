@@ -1,0 +1,31 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+	title="Contact — Drone Max Wind"
+	description="Contact Drone Max Wind about the free drone wind calculator, model data, or privacy."
+>
+	<Header />
+	<main class="page-wrap max-w-3xl py-16">
+		<p class="font-mono text-caption uppercase tracking-wide text-mute">Contact</p>
+		<h1 class="mt-3 text-display-lg font-semibold text-ink">How to reach us.</h1>
+		<p class="mt-5 text-body-lg text-body">
+			This is a small, static tool. There is no account desk and no in-app chat. Email is the
+			right channel for model-data corrections, privacy questions, or a bug in the check.
+		</p>
+		<p class="mt-6 text-body">
+			<a class="font-medium text-link" href="mailto:hello@dronemaxwind.com">hello@dronemaxwind.com</a>
+		</p>
+		<p class="mt-4 text-sm text-body">
+			Include the drone model, location you checked, and what you expected versus what you saw.
+			Do not send live flight logs unless you are comfortable sharing them.
+		</p>
+		<p class="mt-8">
+			<a class="font-medium text-link" href="/#calculator">Back to the calculator →</a>
+		</p>
+	</main>
+	<Footer />
+</Layout>

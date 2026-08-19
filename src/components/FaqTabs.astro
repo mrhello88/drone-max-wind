@@ -1,0 +1,68 @@
+---
+export type FaqItem = { q: string; a: string; tab?: string };
+
+type Props = {
+	items: FaqItem[];
+	title?: string;
+};
+
+const { items, title = "Questions" } = Astro.props;
+---
+
+<section class="mt-10 w-full" data-faq-acc>
+	<h2 class="text-center text-display-sm font-semibold text-ink sm:text-left">{title}</h2>
+	<div class="mt-5 w-full divide-y divide-hairline border-y border-hairline">
+		{
+			items.map((item, i) => (
+				<div data-faq-item class="w-full">
+					<button
+						type="button"
+						data-faq-btn
+						aria-expanded={i === 0 ? "true" : "false"}
+						class="flex w-full items-start justify-between gap-6 py-5 text-left"
+					>
+						<span class="min-w-0 flex-1 text-base font-medium leading-6 text-ink sm:text-lg">{item.q}</span>
+						<span data-faq-icon class="mt-1 shrink-0 font-mono text-caption text-mute" aria-hidden="true">
+							{i === 0 ? "–" : "+"}
+						</span>
+					</button>
+					<div data-faq-panel hidden={i !== 0} class="w-full pb-5">
+						<p class="w-full text-sm leading-7 text-body sm:text-base">{item.a}</p>
+					</div>
+				</div>
+			))
+		}
+	</div>
+</section>
+
+<script>
+	const root = document.querySelector("[data-faq-acc]");
+	if (root) {
+		const items = [...root.querySelectorAll("[data-faq-item]")];
+
+		items.forEach((item) => {
+			const btn = item.querySelector<HTMLButtonElement>("[data-faq-btn]");
+			const panel = item.querySelector<HTMLElement>("[data-faq-panel]");
+			const icon = item.querySelector("[data-faq-icon]");
+			if (!btn || !panel) return;
+
+			btn.addEventListener("click", () => {
+				const open = btn.getAttribute("aria-expanded") === "true";
+				items.forEach((other) => {
+					const oBtn = other.querySelector<HTMLButtonElement>("[data-faq-btn]");
+					const oPanel = other.querySelector<HTMLElement>("[data-faq-panel]");
+					const oIcon = other.querySelector("[data-faq-icon]");
+					if (!oBtn || !oPanel) return;
+					oBtn.setAttribute("aria-expanded", "false");
+					oPanel.hidden = true;
+					if (oIcon) oIcon.textContent = "+";
+				});
+				if (!open) {
+					btn.setAttribute("aria-expanded", "true");
+					panel.hidden = false;
+					if (icon) icon.textContent = "–";
+				}
+			});
+		});
+	}
+</script>

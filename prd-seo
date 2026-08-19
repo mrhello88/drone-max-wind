@@ -1,0 +1,1343 @@
+# Drone Max Wind — SEO Architecture & Content Implementation Master Prompt
+
+You are acting as a **senior technical SEO strategist, information architect, and SEO-focused Astro developer**.
+
+Your job is to improve the SEO, content architecture, trust pages, technical SEO, and search visibility of the existing **Drone Max Wind** website without damaging the existing product, UX, calculator logic, performance, or programmatic model pages.
+
+Do **not** blindly add keywords. First understand the existing website and then implement a clean, topical, long-term SEO structure.
+
+---
+
+# 1. Existing Website
+
+## Brand
+
+**Drone Max Wind**
+
+## Domain
+
+`https://dronemaxwind.com`
+
+## Stack
+
+* Astro
+* Static site
+* Tailwind CSS v4
+* Dark mode is default
+* Light mode toggle
+* Static/programmatic pages
+* No login
+* No paid subscription
+* No ads
+* No user accounts
+
+The site is currently being developed locally and is not yet the mature production SEO site.
+
+---
+
+# 2. What the Website Does
+
+Drone Max Wind is a free consumer-drone flight-safety utility.
+
+The user:
+
+1. Selects a drone model.
+2. Selects/provides a location.
+3. The tool retrieves weather/wind data.
+4. It evaluates wind conditions at:
+
+   * 10 m
+   * 80 m
+   * 120 m
+5. It considers wind and gust conditions.
+6. It produces a practical:
+
+   * GO
+   * CAUTION
+   * NO-GO
+
+The calculator supports:
+
+* mph
+* knots
+* m/s
+
+The drone's published wind limit comes from the model database and should not be manually entered by the user.
+
+Weather data currently comes from **Open-Meteo**.
+
+The tool is intended primarily for:
+
+* US recreational drone pilots
+* Part 107 users
+* consumer drone users
+* field use on mobile devices
+
+Supported/covered drone brands and models can include DJI, Autel, Skydio, Holy Stone, and others.
+
+---
+
+# 3. Current Website Architecture
+
+Current core routes:
+
+```text
+/
+/models
+/compare
+/how-it-works
+/about
+/privacy
+/drone-wind-resistance
+/drone-wind-resistance-levels
+```
+
+There are approximately 45 programmatic model pages.
+
+Pattern:
+
+```text
+/{slug}-wind-resistance-calculator
+```
+
+Examples:
+
+```text
+/dji-mini-4-pro-wind-resistance-calculator
+/dji-air-3s-wind-resistance-calculator
+/dji-neo-wind-resistance-calculator
+/autel-evo-nano-plus-wind-resistance-calculator
+```
+
+There is currently:
+
+```text
+NO /services
+NO /products
+NO /features
+NO /dashboard
+NO /blog
+```
+
+Do not create these simply because they are common website pages. Only create pages that have a genuine purpose and fit the product.
+
+---
+
+# 4. Current Homepage
+
+Current homepage structure:
+
+1. Hero
+2. Field check calculator
+3. Three feature cards
+4. Dark product/value band
+5. Model grid
+
+Hero:
+
+> Know the wind before the props spin.
+
+Lead:
+
+> Select the airframe — Mini 4 Pro, Air 3S, Neo, or the full list…
+
+Stats:
+
+* Surface 10 m
+* Cruise 80 m
+* Legal max 120 m
+
+CTAs:
+
+* Open the check
+* Browse models
+
+Calculator heading:
+
+> Run it here. Results stay in the panel.
+
+Feature concepts:
+
+* The limit is already in.
+* Three heights. No paywall.
+* A verdict, not a lecture.
+
+Dark band:
+
+> One column. One thumb.
+
+Model section:
+
+> A check per airframe.
+
+---
+
+# 5. Existing Guide Content
+
+Current guide:
+
+`/drone-wind-resistance`
+
+It explains:
+
+* wind resistance
+* manufacturer maximum sustained wind
+* why wind resistance is not the same thing as 400 ft
+* Level 5
+* approximately 10.7–12 m/s
+
+Current levels guide:
+
+`/drone-wind-resistance-levels`
+
+Contains levels:
+
+* Level 3
+* Level 4
+* Level 5
+* Level 6
+
+and example models.
+
+Current "How it works":
+
+1. Pick airframe
+2. Retrieve Open-Meteo weather data
+3. Evaluate conditions at 10/80/120 m
+4. Use approximately:
+
+   * 65% caution threshold
+   * 85% no-go threshold
+
+These thresholds and calculation logic are part of the existing product. **Do not change them simply for SEO.**
+
+---
+
+# 6. Existing Model Page Template
+
+Each model page currently contains:
+
+* Model name
+* Wind resistance calculator
+* Maximum wind in m/s
+* mph
+* knots
+* resistance level
+* manufacturer vs estimated value
+* Calculator with drone preselected
+* FAQ
+* Related same-brand models
+* Related links
+
+Existing FAQ examples:
+
+* What wind can this drone handle?
+* Is 400 ft different?
+
+Model pages have dynamic metadata based on:
+
+* model name
+* wind speed
+* resistance level
+* mph
+
+Do not destroy or unnecessarily change this programmatic architecture.
+
+---
+
+# 7. Existing Navigation
+
+Header:
+
+```text
+[DM] Drone Max Wind
+
+Calculator
+Models
+Compare
+Guides
+How it works
+
+Theme
+Check wind
+```
+
+Footer currently contains:
+
+```text
+Product:
+- Calculator
+- Model database
+- Compare
+- How it works
+
+Guides:
+- Drone wind resistance
+- Resistance levels
+- About
+- Privacy
+```
+
+Improve navigation only when there is a clear UX/SEO reason.
+
+Do not turn the header into a huge keyword menu.
+
+---
+
+# 8. Current SEO Implementation
+
+Already implemented:
+
+* Unique title on every page
+* Unique meta description
+* Canonical URL
+* Open Graph
+* Twitter metadata
+* Sitemap integration
+* robots.txt
+* Dynamic metadata on model pages
+* Internal linking
+
+Current issue:
+
+`og:image` points to:
+
+```text
+/og.png
+```
+
+but the file is currently missing from `public/`.
+
+JSON-LD/schema is currently **not implemented**.
+
+There is currently no blog.
+
+---
+
+# 9. Semrush Keyword Research
+
+A Semrush keyword export was analyzed.
+
+There are approximately:
+
+**813 keywords**
+
+with usable Keyword Difficulty data.
+
+The strategy is intentionally conservative.
+
+For the first SEO phase, prioritize keywords around:
+
+**KD 0–47**
+
+and especially:
+
+**KD 0–30**
+
+Do NOT immediately try to rank for every high-difficulty keyword.
+
+The goal is:
+
+```text
+Low competition
+        ↓
+Relevant long-tail traffic
+        ↓
+Topical authority
+        ↓
+Impressions
+        ↓
+Clicks
+        ↓
+Internal authority
+        ↓
+Harder keywords
+```
+
+---
+
+# 10. Important Keyword Opportunities
+
+Some particularly useful low-KD keywords found in the research are:
+
+| Keyword                       | Volume | KD | Priority  |
+| ----------------------------- | -----: | -: | --------- |
+| wind turbine drone inspection |    170 |  2 | Very High |
+| wind turbine inspection drone |    110 |  0 | Very High |
+| drone wind resistance levels  |     70 |  0 | Very High |
+| level 5 wind resistance       |    140 |  3 | Very High |
+| ultrasonic wind sensors       |     70 |  4 | Very High |
+| drone weather forecast        |    390 | 34 | High      |
+| weather drones                |    170 | 16 | High      |
+| uav radar                     |    320 | 16 | High      |
+| ready to fly uav              |    390 | 21 | High      |
+| wind farm drone inspection    |     50 |  6 | High      |
+
+Important:
+
+**Keyword Difficulty is not the only ranking factor.**
+
+Evaluate:
+
+* search intent
+* relevance
+* SERP competition
+* topical authority
+* content quality
+* business/product relevance
+* internal linking opportunities
+
+Do not assume a KD 0 keyword is automatically easy or worth targeting.
+
+---
+
+# 11. DO NOT Create One Page Per Keyword
+
+This is extremely important.
+
+Do NOT create separate pages for:
+
+```text
+wind turbine drone inspection
+wind turbine inspection drone
+drone wind turbine inspection
+wind turbine blade inspection drone
+```
+
+Instead, if this topic genuinely fits the product, create one authoritative topical page such as:
+
+```text
+/wind-turbine-drone-inspection
+```
+
+and naturally cover related search intents.
+
+Potential sections:
+
+1. What Is Wind Turbine Drone Inspection?
+2. How Drone Inspection Works
+3. Wind Turbine Blade Inspection
+4. Wind Conditions for Inspection
+5. How Wind Affects Drone Stability
+6. Offshore Wind Turbine Inspection
+7. Inspection Equipment
+8. Benefits
+9. Limitations
+10. Inspection Planning
+11. FAQ
+
+However:
+
+**Do not automatically create this page unless the website/business actually has enough legitimate expertise/content to support it.**
+
+The website's core purpose is consumer drone wind safety, not industrial wind-turbine inspection.
+
+Before creating a new topic cluster, assess topical relevance to the actual product.
+
+---
+
+# 12. Critical SEO Principle
+
+Do NOT optimize the website by stuffing unrelated high-volume keywords.
+
+For every proposed page ask:
+
+```text
+Does this keyword describe what Drone Max Wind genuinely provides?
+```
+
+If the answer is:
+
+```text
+NO
+```
+
+do not create the page just because the keyword has search volume.
+
+Relevance is more important than raw volume.
+
+---
+
+# 13. Long-Tail Strategy
+
+Use long-tail keywords naturally where they match the product.
+
+Examples:
+
+```text
+safe drone wind speed for inspection
+drone wind speed limits for inspection work
+how wind affects drone flight stability
+how to check wind before flying a drone
+wind gusts vs sustained wind for drones
+drone wind resistance explained for beginners
+wind conditions for wind turbine drone inspection
+how windy is too windy to fly
+drone forecast for safe flight planning
+best weather data for drone flight planning
+wind speed monitoring for drone operations
+real-time wind monitoring for drone flights
+```
+
+Do not force all of these onto the site.
+
+Only use a keyword when the page genuinely answers the searcher's question.
+
+---
+
+# 14. Recommended SEO Topic Clusters
+
+Evaluate these clusters before implementation.
+
+## Cluster A — Drone Wind Resistance
+
+Potential page:
+
+```text
+/drone-wind-resistance
+```
+
+Target concepts:
+
+* drone wind resistance
+* drone wind resistance levels
+* wind resistance levels
+* safe wind speed for drones
+* drone wind speed limits
+* wind gusts vs sustained wind
+* how windy is too windy to fly
+
+The existing guide should be expanded rather than duplicated.
+
+---
+
+## Cluster B — Wind Resistance Levels
+
+Existing:
+
+```text
+/drone-wind-resistance-levels
+```
+
+Potential supporting concepts:
+
+* level 4 wind resistance
+* level 5 wind resistance
+* level 6 wind resistance
+* what does level 5 wind resistance mean
+* drone wind resistance rating explained
+
+Again:
+
+Do not create one page for every keyword variation.
+
+---
+
+## Cluster C — Drone Weather & Flight Planning
+
+Potential new page:
+
+```text
+/drone-weather
+```
+
+or another clean URL if a better architecture is identified.
+
+Potential topics:
+
+* drone weather forecast
+* drone weather report
+* weather forecast for drone flying
+* weather app for drones
+* how to check wind before flying
+* wind gusts
+* flight planning
+
+This cluster is highly relevant to Drone Max Wind's core product.
+
+---
+
+## Cluster D — Windy Conditions
+
+Potential page:
+
+```text
+/best-drones-for-windy-conditions
+```
+
+Only create this if the website genuinely intends to provide model comparisons.
+
+It could explain:
+
+* published wind resistance
+* model differences
+* practical considerations
+* manufacturer specifications
+* how to interpret wind ratings
+
+Do not make unsupported claims such as:
+
+> "Drone X is definitely safe at 40 mph."
+
+Use published specifications and clearly distinguish estimates from manufacturer data.
+
+---
+
+# 15. Trademark / IP / Brand SEO Rules
+
+Do NOT create pages simply to capture branded traffic.
+
+Keywords/brands found in the research include:
+
+```text
+DJI
+Apple UAV
+UAVForecast
+Oktofly
+Dronecast
+Amazon Prime Air
+```
+
+Do not create SEO pages whose only purpose is ranking for:
+
+```text
+uavforecast
+oktofly
+dronecast
+```
+
+Do not imitate competitors.
+
+Do not use competitor logos.
+
+Do not imply affiliation.
+
+Do not use wording such as:
+
+> Official DJI wind calculator
+
+unless the website is actually officially affiliated.
+
+DJI and other manufacturers may be mentioned **factually** when genuinely relevant to model specifications, comparisons, or educational content.
+
+For example:
+
+> DJI Mini 4 Pro's published wind resistance is...
+
+is fundamentally different from:
+
+> Official DJI Mini 4 Pro wind calculator
+
+Do not create misleading commercial association.
+
+---
+
+# 16. Sensitive / Irrelevant Keywords
+
+Exclude irrelevant or sensitive keywords from the commercial SEO strategy.
+
+For example:
+
+```text
+military drone wind threshold
+```
+
+should not become a target page simply because it exists in keyword research.
+
+The website is a consumer/commercial drone flight-safety utility.
+
+Focus on legitimate civilian drone use cases.
+
+---
+
+# 17. SEO Content Quality Rules
+
+Every new SEO page must be:
+
+* genuinely useful
+* human-readable
+* original
+* specific
+* factually supportable
+* relevant to Drone Max Wind
+* written for the user first
+
+Do NOT:
+
+* keyword stuff
+* repeat the same keyword in every heading
+* generate thin AI pages
+* create doorway pages
+* create hundreds of nearly identical pages
+* create pages solely for search engines
+* copy competitor content
+* fabricate statistics
+* fabricate manufacturer specifications
+* make unsupported safety guarantees
+
+---
+
+# 18. Add FAQ Sections
+
+Where appropriate, add an FAQ section to major educational pages.
+
+Potential FAQ questions:
+
+### Drone wind resistance
+
+* What wind speed is safe for a drone?
+* What is Level 5 wind resistance?
+* Is wind speed the same as wind gust speed?
+* How does altitude affect drone wind conditions?
+* How windy is too windy to fly a drone?
+* Does a drone's advertised wind resistance guarantee safe flight?
+
+### Drone weather
+
+* How should I check wind before flying?
+* What wind speed should I consider when planning a flight?
+* Why are wind gusts important?
+* Does wind speed change with altitude?
+* Can weather conditions change during a flight?
+
+FAQ answers must be genuinely useful.
+
+Do not create FAQ sections solely to insert keywords.
+
+---
+
+# 19. Add Trust / Legal Pages
+
+The website currently needs these pages:
+
+```text
+/privacy
+/about
+/terms
+/contact
+```
+
+Privacy and About already exist.
+
+Create:
+
+```text
+/terms
+/contact
+```
+
+if they are genuinely missing.
+
+Also review whether the existing Privacy/About pages adequately explain:
+
+* who operates the website
+* what data is stored
+* localStorage usage
+* location/GPS behavior
+* Open-Meteo usage
+* limitations of the calculator
+* that the tool is informational
+* that weather conditions can change
+* that users remain responsible for flight decisions
+
+Do not make legal claims you cannot verify.
+
+For Terms and Privacy, use clear, honest language and avoid pretending to provide legal advice.
+
+---
+
+# 20. Add Error Pages
+
+Implement:
+
+```text
+404
+500
+```
+
+appropriate for Astro's deployment model.
+
+The 404 page should:
+
+* preserve Drone Max Wind branding
+* clearly explain that the page was not found
+* link to Calculator
+* link to Models
+* link to Guides
+* provide a useful recovery path
+
+Do not make the 404 page a keyword-stuffed SEO page.
+
+The 500/error experience should be helpful and should not expose internal errors, stack traces, secrets, or implementation details.
+
+---
+
+# 21. Robots.txt
+
+Review the current robots.txt.
+
+Ensure:
+
+* public pages are crawlable
+* the sitemap is declared
+* private/non-public paths are not accidentally exposed
+* there are no unnecessary disallow rules
+
+Do not block legitimate SEO pages.
+
+Use the correct canonical production domain:
+
+```text
+https://dronemaxwind.com
+```
+
+---
+
+# 22. Sitemap
+
+The current site uses:
+
+```text
+@astrojs/sitemap
+```
+
+Review the generated sitemap architecture.
+
+Verify:
+
+* production URLs are correct
+* canonical URLs match
+* all important public pages are included
+* model pages are included
+* no accidental development/local URLs appear
+* privacy/terms/contact pages are handled appropriately
+* duplicate URLs are not generated
+
+Do not create a manual sitemap if Astro's sitemap integration already handles it correctly.
+
+If the generated file is an index sitemap, do not incorrectly replace it with a single sitemap.xml requirement just for the sake of naming.
+
+The important thing is that the production sitemap is valid and discoverable.
+
+---
+
+# 23. JSON-LD / Structured Data
+
+The website currently has no JSON-LD.
+
+Implement structured data only where it is appropriate.
+
+Potential schemas:
+
+### Organization
+
+For the overall site/brand if sufficient information is available.
+
+### WebSite
+
+For the website.
+
+### WebApplication
+
+Potentially appropriate for the Drone Max Wind calculator because it is a web-based utility.
+
+### BreadcrumbList
+
+Useful on guides and nested content where applicable.
+
+### FAQPage
+
+Only if the FAQ content genuinely qualifies and is visible on the page.
+
+Do NOT add fake schema.
+
+Do NOT add every possible schema type.
+
+Do NOT add structured data that does not match visible page content.
+
+---
+
+# 24. Homepage SEO
+
+Do not destroy the current visual design.
+
+The homepage is primarily a product/utility landing page.
+
+Potential improvements:
+
+* preserve current H1
+* clarify what the tool does in the supporting copy
+* naturally mention relevant concepts such as:
+
+  * drone wind speed
+  * wind resistance
+  * wind forecast
+  * flight planning
+* add a concise explanatory section below the calculator
+* link to:
+
+  * Drone Wind Resistance
+  * Wind Resistance Levels
+  * How It Works
+  * Models
+  * Compare
+* add an FAQ section if appropriate
+
+Do not turn the homepage into a 2,000-word SEO article.
+
+The calculator remains the primary product experience.
+
+---
+
+# 25. Internal Linking Strategy
+
+Build a deliberate internal-link graph.
+
+For example:
+
+```text
+Homepage
+   ↓
+Drone Wind Resistance
+   ↓
+Wind Resistance Levels
+   ↓
+Model Pages
+   ↓
+Compare
+   ↓
+How It Works
+```
+
+And:
+
+```text
+Homepage
+   ↓
+Drone Weather / Flight Planning
+   ↓
+Calculator
+```
+
+Model pages should link to:
+
+* main wind resistance guide
+* levels guide
+* calculator
+* compare
+* related models
+
+Use descriptive but natural anchor text.
+
+Do not use the exact same keyword anchor everywhere.
+
+---
+
+# 26. Programmatic Model Page SEO
+
+The 45+ model pages are potentially one of the strongest assets of this website.
+
+Do NOT delete them.
+
+Audit them for:
+
+* duplicate/thin content
+* unique title
+* unique H1
+* useful model-specific information
+* unique description
+* manufacturer attribution
+* clear distinction between published specifications and estimates
+* internal links
+* related models
+* FAQ
+* breadcrumbs if appropriate
+* structured data if appropriate
+
+Do not generate fake uniqueness by changing only a few words.
+
+Each model page should provide actual model-specific value.
+
+---
+
+# 27. Important: Do Not Change Product Logic for SEO
+
+Do not change:
+
+* calculator thresholds
+* wind calculations
+* weather API behavior
+* altitude logic
+* model database values
+* GO/CAUTION/NO-GO logic
+* location behavior
+
+unless explicitly requested.
+
+SEO work must not silently modify safety-related product behavior.
+
+If you discover a possible calculation/safety issue, report it separately instead of changing it automatically.
+
+---
+
+# 28. OG Image
+
+The current metadata references:
+
+```text
+/og.png
+```
+
+but the file is missing.
+
+Fix this.
+
+Create/add a proper OG image asset if the existing design system permits it.
+
+It should be branded as:
+
+```text
+Drone Max Wind
+```
+
+and communicate the product clearly.
+
+Do not use copyrighted third-party drone images without appropriate rights.
+
+---
+
+# 29. Accessibility and UX
+
+SEO implementation must not damage accessibility.
+
+Maintain:
+
+* semantic headings
+* accessible buttons
+* meaningful links
+* alt text for informative images
+* keyboard navigation
+* mobile usability
+* readable contrast
+* proper form labels
+
+Do not add hidden keyword text.
+
+Do not hide content specifically for search engines.
+
+---
+
+# 30. Performance
+
+Drone Max Wind is an Astro static site.
+
+Preserve its performance advantage.
+
+Do not add:
+
+* unnecessary JavaScript
+* heavy SEO plugins
+* huge images
+* unnecessary third-party scripts
+* bloated libraries
+
+Prefer:
+
+* static HTML
+* lightweight components
+* optimized images
+* semantic HTML
+* minimal client-side JS
+
+---
+
+# 31. What NOT To Do
+
+This section is mandatory.
+
+DO NOT:
+
+1. Create one page for every keyword.
+2. Create hundreds of AI-generated thin pages.
+3. Target KD 48+ aggressively right now.
+4. Stuff keywords into existing pages.
+5. Add unrelated high-volume keywords.
+6. Target competitor brand names simply for traffic.
+7. Create misleading competitor pages.
+8. Imply affiliation with DJI, UAVForecast, or other brands.
+9. Copy competitor content.
+10. Fabricate manufacturer specifications.
+11. Fabricate weather/safety statistics.
+12. Change calculator logic for SEO.
+13. Change the existing UX unnecessarily.
+14. Add a blog just because "every SEO website needs a blog."
+15. Create /services, /products, /features, etc. without genuine content/product justification.
+16. Create fake FAQ questions just to rank.
+17. Add fake structured data.
+18. Hide keywords in CSS/HTML.
+19. Use doorway pages.
+20. Automatically index meaningless parameter URLs.
+21. Generate duplicate model pages.
+22. Add military/sensitive topics just because they have search volume.
+23. Over-optimize exact-match anchors.
+24. Make unsupported safety guarantees.
+25. Treat Keyword Difficulty as the only SEO metric.
+
+---
+
+# 32. SEO Priority
+
+Use this order.
+
+## Phase 1 — Foundation
+
+First:
+
+* audit current metadata
+* audit canonical URLs
+* fix OG image
+* review robots.txt
+* review sitemap
+* add structured data where appropriate
+* improve internal linking
+* review headings
+* review model page uniqueness
+* add Terms
+* add Contact
+* review Privacy
+* review About
+* add 404
+* add 500
+
+## Phase 2 — Existing Content
+
+Improve:
+
+```text
+/drone-wind-resistance
+/drone-wind-resistance-levels
+/how-it-works
+```
+
+Do not duplicate them.
+
+Expand useful content and FAQs.
+
+## Phase 3 — Relevant New Content
+
+Only after auditing the existing site, consider creating highly relevant content such as:
+
+```text
+/drone-weather
+```
+
+or an equivalent route.
+
+Focus on:
+
+* drone weather forecast
+* wind forecast
+* gusts
+* flight planning
+* weather conditions
+
+This is directly related to the core product.
+
+## Phase 4 — Long Tail
+
+Use long-tail questions naturally inside relevant pages.
+
+## Phase 5 — Data-driven expansion
+
+After launch, monitor:
+
+* Google Search Console impressions
+* clicks
+* CTR
+* average position
+* queries
+* indexed pages
+* coverage
+* Core Web Vitals
+
+Then decide which KD 30–47 and eventually KD 48+ opportunities deserve investment.
+
+---
+
+# 33. Target Keyword Philosophy
+
+The current priority is:
+
+```text
+RELEVANCE > SEARCH VOLUME
+INTENT > KEYWORD COUNT
+QUALITY > PAGE COUNT
+TOPICAL AUTHORITY > KEYWORD STUFFING
+```
+
+The website should become authoritative around:
+
+```text
+Drone wind
+Drone wind resistance
+Drone weather
+Drone flight planning
+Wind forecasts for drones
+Drone model wind limits
+```
+
+rather than trying to become an unrelated general "drone" website.
+
+---
+
+# 34. Content Length
+
+Do not use word count as the main SEO goal.
+
+For substantial educational guides, approximately **800–1,200 words** can be a useful target when the topic genuinely requires that much explanation.
+
+But:
+
+**Do not pad content just to reach 1,200 words.**
+
+A useful 700-word page is better than a repetitive 1,500-word page.
+
+The content should answer the user's question completely.
+
+---
+
+# 35. Before Making Changes
+
+First inspect the actual codebase.
+
+Identify:
+
+* Astro routes
+* layouts
+* components
+* metadata implementation
+* sitemap configuration
+* robots.txt
+* model page generation
+* model data source
+* calculator component
+* existing internal-link components
+* existing FAQ components
+* deployment configuration
+
+Then create an implementation plan.
+
+Do not immediately rewrite files.
+
+Clearly separate:
+
+```text
+Existing and good
+Existing but needs improvement
+New required
+Optional future
+Do not implement
+```
+
+---
+
+# 36. Implementation Requirement
+
+After the audit, implement the SEO improvements in a way that:
+
+* preserves existing design
+* preserves existing calculator behavior
+* preserves model pages
+* preserves responsive behavior
+* improves semantic HTML
+* improves internal linking
+* improves structured data
+* improves crawlability
+* improves trust
+* improves content quality
+
+Keep the code clean and maintainable.
+
+Avoid unnecessary refactoring.
+
+---
+
+# 37. Final Deliverable
+
+When finished, provide a concise report containing:
+
+### A. Changes Made
+
+List every file/page/component changed.
+
+### B. New Pages
+
+List only pages that were actually necessary.
+
+### C. SEO Improvements
+
+Explain:
+
+* titles
+* descriptions
+* canonical
+* schema
+* sitemap
+* robots
+* internal linking
+* FAQs
+* headings
+
+### D. Keyword Mapping
+
+Show:
+
+```text
+Keyword cluster → URL → Search intent
+```
+
+### E. Excluded Keywords
+
+List important keywords deliberately not targeted and explain why.
+
+### F. Risks
+
+Identify:
+
+* trademark/IP considerations
+* duplicate-content risks
+* thin-content risks
+* programmatic SEO risks
+* technical SEO risks
+
+### G. Future SEO Plan
+
+Explain what should be monitored after launch and when to consider harder KD 48+ keywords.
+
+---
+
+# Final Instruction
+
+Do not treat this as a generic SEO website.
+
+**Drone Max Wind is a specific free drone wind-safety calculator.**
+
+The objective is NOT:
+
+> "Put as many keywords as possible into the website."
+
+The objective is:
+
+> Build a technically clean, trustworthy, useful topical website around drone wind resistance, wind conditions, weather/flight planning, and model-specific wind information.
+
+Start with the existing website.
+
+Reuse existing pages wherever the search intent matches.
+
+Create new pages only when there is a genuine content gap.
+
+Prioritize low-competition, highly relevant long-tail opportunities.
+
+Avoid competitor-brand targeting, IP/trademark misuse, irrelevant high-volume keywords, thin content, doorway pages, keyword stuffing, and unnecessary URL proliferation.
+
+**Do not change calculator/safety logic as part of SEO work.**

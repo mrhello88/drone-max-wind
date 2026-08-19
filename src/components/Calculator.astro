@@ -1,0 +1,228 @@
+---
+import type { Drone } from "../data/drones";
+
+type Props = {
+	drone?: Drone;
+};
+
+const { drone } = Astro.props;
+---
+
+<section
+	id="calculator"
+	data-calculator
+	data-preset={drone?.slug ?? ""}
+	class="instrument flex h-[min(38rem,75dvh)] min-h-[28rem] min-w-0 flex-col overflow-hidden rounded-lg bg-band text-on-band shadow-float"
+	data-mobile-pane="setup"
+>
+	<div class="flex shrink-0 flex-col gap-3 border-b border-white/10 px-4 py-3 sm:px-5">
+		<div class="flex items-center gap-2">
+			<span class="h-1.5 w-1.5 rounded-full bg-go"></span>
+			<p class="font-mono text-caption uppercase tracking-wide text-on-band/50">Field instrument</p>
+		</div>
+		<div data-units class="flex h-10 w-full rounded-sm border border-white/12 p-0.5">
+			<button type="button" data-unit="mph" class="flex h-full min-w-0 flex-1 items-center justify-center rounded-sm font-mono text-caption text-on-band/60"
+				>mph</button
+			>
+			<button type="button" data-unit="kt" class="flex h-full min-w-0 flex-1 items-center justify-center rounded-sm font-mono text-caption text-on-band/60"
+				>kt</button
+			>
+			<button type="button" data-unit="ms" class="flex h-full min-w-0 flex-1 items-center justify-center rounded-sm font-mono text-caption text-on-band/60"
+				>m/s</button
+			>
+		</div>
+	</div>
+
+	<div
+		data-mobile-tabs
+		class="flex shrink-0 border-b border-white/10 p-2 lg:hidden"
+	>
+		<button
+			type="button"
+			data-pane-btn="setup"
+			class="h-10 flex-1 rounded-sm bg-on-band font-mono text-caption uppercase tracking-wide text-band"
+		>
+			Check
+		</button>
+		<button
+			type="button"
+			data-pane-btn="results"
+			class="h-10 flex-1 rounded-sm font-mono text-caption uppercase tracking-wide text-on-band/55"
+		>
+			Results
+		</button>
+	</div>
+
+	<div class="flex min-h-0 flex-1 flex-col lg:grid lg:grid-cols-[minmax(16rem,20rem)_minmax(0,1fr)]">
+		<div
+			data-pane-setup
+			class="instrument-scroll grid min-h-0 flex-1 content-start gap-4 overflow-y-auto p-4 sm:p-5 lg:border-r lg:border-white/10"
+		>
+			<div>
+				<p class="font-mono text-caption uppercase tracking-wide text-on-band/50">
+					{drone ? drone.brand : "Setup"}
+				</p>
+				<h2 class="mt-1 text-[18px] leading-6 font-semibold tracking-[-0.4px] text-on-band sm:text-display-sm">
+					{drone ? `${drone.name}.` : "Check this field."}
+				</h2>
+			</div>
+
+			<label class="grid gap-1.5">
+				<span class="font-mono text-caption uppercase tracking-wide text-on-band/50">Find model</span>
+				<input
+					data-model-filter
+					type="search"
+					placeholder="Mini 4 Pro, Air 3S, Neo…"
+					autocomplete="off"
+					class="h-11 rounded-sm border border-white/12 px-3 text-sm text-on-band outline-none ring-cyan/40 placeholder:text-on-band/35 focus:ring-2"
+				/>
+			</label>
+			<label class="grid gap-1.5">
+				<span class="font-mono text-caption uppercase tracking-wide text-on-band/50">Drone</span>
+				<select
+					data-model
+					class="h-11 w-full rounded-sm border border-white/12 px-3 pr-11 text-sm text-on-band outline-none ring-cyan/40 focus:ring-2"
+				>
+				</select>
+			</label>
+			<div data-spec hidden class="grid grid-cols-2 gap-3 rounded-sm bg-white/5 p-3">
+				<div>
+					<p class="font-mono text-caption uppercase text-on-band/45">Max wind</p>
+					<p data-spec-limit class="mt-1 text-sm font-medium text-on-band"></p>
+				</div>
+				<div>
+					<p class="font-mono text-caption uppercase text-on-band/45">Level</p>
+					<p data-spec-level class="mt-1 text-sm font-medium text-on-band"></p>
+				</div>
+				<div>
+					<p class="font-mono text-caption uppercase text-on-band/45">Weight</p>
+					<p data-spec-weight class="mt-1 text-sm font-medium text-on-band"></p>
+				</div>
+				<div>
+					<p class="font-mono text-caption uppercase text-on-band/45">Source</p>
+					<p data-spec-source class="mt-1 text-sm font-medium text-on-band"></p>
+				</div>
+			</div>
+			<div class="grid gap-1.5">
+				<span class="font-mono text-caption uppercase tracking-wide text-on-band/50">Location</span>
+				<button
+					type="button"
+					data-locate
+					class="h-11 rounded-sm bg-on-band text-sm font-medium text-band"
+				>
+					Use my location
+				</button>
+				<p
+					data-location-display
+					hidden
+					class="break-words rounded-sm bg-white/5 px-3 py-2.5 font-mono text-caption text-on-band/80"
+				>
+				</p>
+				<div class="relative">
+					<input
+						data-place
+						type="search"
+						placeholder="Or search city, park, or field"
+						autocomplete="off"
+						class="h-11 w-full rounded-sm border border-white/12 px-3 text-sm text-on-band outline-none ring-cyan/40 placeholder:text-on-band/35 focus:ring-2"
+					/>
+					<ul
+						data-place-list
+						hidden
+						class="absolute z-20 mt-1 max-h-40 w-full overflow-auto rounded-sm border border-white/10 bg-band py-1 shadow-modal"
+					>
+					</ul>
+				</div>
+			</div>
+			<button
+				type="button"
+				data-check
+				class="h-11 rounded-sm border border-white/15 bg-white/5 text-sm font-medium text-on-band"
+			>
+				Run check
+			</button>
+			<p data-status hidden class="font-mono text-caption text-on-band/55"></p>
+		</div>
+
+		<div
+			data-results
+			data-pane-results
+			class="instrument-scroll min-h-0 flex-1 overflow-y-auto p-4 sm:p-5"
+		>
+			<div data-results-empty class="grid h-full min-h-48 place-content-center gap-2 text-center">
+				<p class="font-mono text-caption uppercase tracking-wide text-on-band/40">Awaiting check</p>
+				<p class="max-w-xs text-sm text-on-band/55">
+					Pick a drone, set a place, then run check. Verdict, 10 / 80 / 120 m, and 12-hour wind
+					open here — this pane scrolls, the page does not.
+				</p>
+			</div>
+
+			<div data-results-body hidden class="grid gap-4">
+				<div data-verdict>
+					<p data-verdict-kicker class="font-mono text-caption uppercase tracking-wide opacity-70"></p>
+					<p data-verdict-title class="mt-1 text-[22px] leading-7 font-semibold tracking-[-0.6px] sm:text-display-md"></p>
+				</div>
+				<p data-reason class="text-sm leading-6 text-on-band/75"></p>
+
+				<div data-alt-cards class="grid grid-cols-1 gap-2 md:grid-cols-3"></div>
+
+				<div class="rounded-sm bg-white/5 p-4">
+					<p class="font-mono text-caption uppercase tracking-wide text-on-band/45">Live conditions</p>
+					<dl class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+						<div>
+							<dt class="font-mono text-caption text-on-band/45">Place</dt>
+							<dd data-place-out class="mt-1 break-words text-sm font-medium text-on-band"></dd>
+						</div>
+						<div>
+							<dt class="font-mono text-caption text-on-band/45">Updated</dt>
+							<dd data-updated class="mt-1 text-sm font-medium text-on-band"></dd>
+						</div>
+						<div>
+							<dt class="font-mono text-caption text-on-band/45">GPS / pin</dt>
+							<dd data-gps class="mt-1 text-sm font-medium text-on-band"></dd>
+						</div>
+						<div>
+							<dt class="font-mono text-caption text-on-band/45">Air temp</dt>
+							<dd data-temp class="mt-1 text-sm font-medium text-on-band"></dd>
+						</div>
+						<div>
+							<dt class="font-mono text-caption text-on-band/45">Sky</dt>
+							<dd data-cloud class="mt-1 text-sm font-medium text-on-band"></dd>
+						</div>
+						<div>
+							<dt class="font-mono text-caption text-on-band/45">Wind from</dt>
+							<dd data-dir class="mt-1 text-sm font-medium text-on-band"></dd>
+						</div>
+						<div>
+							<dt class="font-mono text-caption text-on-band/45">Model</dt>
+							<dd data-model-out class="mt-1 text-sm font-medium text-on-band"></dd>
+						</div>
+						<div>
+							<dt class="font-mono text-caption text-on-band/45">Published limit</dt>
+							<dd data-limit-out class="mt-1 text-sm font-medium text-on-band"></dd>
+						</div>
+						<div>
+							<dt class="font-mono text-caption text-on-band/45">Source</dt>
+							<dd class="mt-1 text-sm font-medium text-on-band">Open-Meteo</dd>
+						</div>
+					</dl>
+				</div>
+
+				<div>
+					<p class="font-mono text-caption uppercase tracking-wide text-on-band/45">Next 12 hours</p>
+					<div data-hours class="mt-2 grid gap-2"></div>
+				</div>
+				<p class="font-mono text-caption text-on-band/40">
+					Planning tool only. Confirm airspace, batteries, and what you can see.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	import { initCalculator } from "../lib/calculator";
+
+	const root = document.querySelector<HTMLElement>("[data-calculator]");
+	if (root) initCalculator(root, root.dataset.preset || undefined);
+</script>

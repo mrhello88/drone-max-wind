@@ -1,0 +1,18 @@
+---
+type Props = {
+	data: unknown;
+};
+
+const { data } = Astro.props;
+const payload = Array.isArray(data)
+	? { "@context": "https://schema.org", "@graph": data.map((item) => {
+			if (item && typeof item === "object" && "@context" in item) {
+				const { "@context": _c, ...rest } = item as Record<string, unknown>;
+				return rest;
+			}
+			return item;
+		}) }
+	: data;
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(payload)} />

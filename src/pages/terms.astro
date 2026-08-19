@@ -1,0 +1,47 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+	title="Terms — Drone Max Wind"
+	description="Terms for using Drone Max Wind. The calculator is informational. You remain responsible for every flight decision."
+>
+	<Header />
+	<main class="page-wrap max-w-3xl py-16">
+		<p class="font-mono text-caption uppercase tracking-wide text-mute">Terms</p>
+		<h1 class="mt-3 text-display-lg font-semibold text-ink">Use of this site.</h1>
+		<p class="mt-5 text-body">
+			Drone Max Wind is a free, informational wind-planning tool for consumer drones. By using
+			the site you agree to these terms. This is not legal advice.
+		</p>
+		<h2 class="mt-10 text-display-sm font-semibold text-ink">The calculator is a planning aid.</h2>
+		<p class="mt-3 text-body">
+			GO, CAUTION, and NO-GO are estimates from published model limits and Open-Meteo wind at
+			10 m, 80 m, and 120 m. Weather can change. Local terrain, rotors, and gusts can differ from
+			the model. You remain responsible for the decision to fly, visual line of sight, airspace,
+			and all applicable rules, including FAA recreational or Part 107 requirements in the US.
+		</p>
+		<h2 class="mt-10 text-display-sm font-semibold text-ink">No affiliation.</h2>
+		<p class="mt-3 text-body">
+			Drone Max Wind is independent. We are not affiliated with DJI, Autel, Skydio, Holy Stone,
+			Open-Meteo, or any aviation authority. Brand names are used only to identify models and
+			published specs.
+		</p>
+		<h2 class="mt-10 text-display-sm font-semibold text-ink">Data and specs.</h2>
+		<p class="mt-3 text-body">
+			Manufacturer ratings are taken from public specifications where we can find them. Some
+			limits are labeled as class estimates. Specs can change; check the maker if you need an
+			official figure. We do not guarantee completeness or accuracy.
+		</p>
+		<h2 class="mt-10 text-display-sm font-semibold text-ink">Acceptable use.</h2>
+		<p class="mt-3 text-body">
+			Do not abuse the weather APIs, scrape the site in a way that degrades the service, or
+			present this tool as an official aviation product. The site is provided as-is, without
+			warranty.
+		</p>
+		<p class="mt-8 text-sm text-mute">Last updated: August 2026.</p>
+	</main>
+	<Footer />
+</Layout>

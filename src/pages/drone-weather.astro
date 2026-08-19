@@ -1,0 +1,92 @@
+---
+import Faq from "../components/Faq.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+import RelatedLinks from "../components/RelatedLinks.astro";
+import { breadcrumbLd, faqLd } from "../lib/schema";
+
+const faqs = [
+	{
+		q: "How should I check wind before flying a drone?",
+		a: "Check sustained wind and gusts at the height you will actually fly, not only the airport 10 m reading. Drone Max Wind does that at 10 m, 80 m, and 120 m against your model’s published limit.",
+	},
+	{
+		q: "Why do gusts matter more than the average?",
+		a: "A drone’s wind rating is usually sustained wind. A gust that hits the limit for a second can still shove a Mini-class airframe. We use the worse of sustained and gust at each height.",
+	},
+	{
+		q: "Does wind speed change with altitude?",
+		a: "Usually yes. 120 m (about 400 ft) is often stronger than what you feel at takeoff. That is why a “light breeze” on the ground is not a free pass at the legal ceiling.",
+	},
+	{
+		q: "Can weather change during a flight?",
+		a: "Yes. A 12-hour hourly view is for planning, not a live guarantee. If the sky or the trees pick up while you are up, land.",
+	},
+];
+---
+
+<Layout
+	title="Drone weather and wind before you fly — Drone Max Wind"
+	description="How to check drone weather: sustained wind vs gusts, why 10 m is not 400 ft, and how to use a forecast for go / no-go flight planning."
+	jsonLd={[
+		breadcrumbLd([
+			{ name: "Home", href: "/" },
+			{ name: "Drone weather", href: "/drone-weather" },
+		]),
+		faqLd(faqs),
+	]}
+>
+	<Header />
+	<main class="page-wrap max-w-3xl py-16">
+		<p class="font-mono text-caption uppercase tracking-wide text-mute">Flight planning</p>
+		<h1 class="mt-3 text-display-lg font-semibold text-ink">Drone weather, without the folklore.</h1>
+		<p class="mt-5 text-body-lg text-body">
+			A “nice day” at the car park is not a wind brief. Consumer drones fail in gusts and at
+			height, not in the average you saw on a phone widget. This page is how we want you to
+			read a forecast before you open the{" "}
+			<a href="/#calculator" class="text-link">field check</a>.
+		</p>
+
+		<h2 class="mt-12 text-display-sm font-semibold text-ink">What to look at</h2>
+		<p class="mt-3 text-body">
+			Sustained wind is the mean. Gusts are the spikes. Your remote’s{" "}
+			<a href="/drone-wind-resistance" class="text-link">wind resistance</a> number is almost
+			always sustained. If gusts sit near that number, treat the flight as caution or no-go even
+			when the mean looks polite.
+		</p>
+		<p class="mt-4 text-body">
+			Height matters. Surface (10 m) is takeoff and landing. Cruise is often around 80 m. The US
+			recreational ceiling is about 120 m (400 ft AGL). Open-Meteo is the source this site uses
+			for those three. It is a model, not a windsock.
+		</p>
+
+		<h2 class="mt-12 text-display-sm font-semibold text-ink">How to check before you fly</h2>
+		<ol class="mt-3 list-decimal space-y-3 pl-5 text-body">
+			<li>Pick the actual airframe in the <a href="/models" class="text-link">model list</a> so the limit is not a guess.</li>
+			<li>Set the field, not the nearest city center if you can help it.</li>
+			<li>Read 10 m, 80 m, and 120 m — plus gusts — against that limit.</li>
+			<li>Scan the next few hours. A green now and a red in 40 minutes is still a no.</li>
+			<li>Look at the trees. If they disagree with the app, the trees win.</li>
+		</ol>
+
+		<h2 class="mt-12 text-display-sm font-semibold text-ink">What this is not</h2>
+		<p class="mt-3 text-body">
+			Not a METAR replacement for a towered airport job. Not LAANC. Not a promise that Level 5
+			means 12 m/s at 400 ft. See{" "}
+			<a href="/how-it-works" class="text-link">how the verdict is calculated</a> and{" "}
+			<a href="/drone-wind-resistance-levels" class="text-link">what the levels mean</a>.
+		</p>
+
+		<Faq items={faqs} />
+		<RelatedLinks
+			links={[
+				{ href: "/#calculator", label: "Run the field check" },
+				{ href: "/drone-wind-resistance", label: "Wind resistance explained" },
+				{ href: "/how-it-works", label: "GO / CAUTION / NO-GO method" },
+				{ href: "/models", label: "Model wind limits" },
+			]}
+		/>
+	</main>
+	<Footer />
+</Layout>
